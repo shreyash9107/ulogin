@@ -10,7 +10,7 @@ const CreateOrg = () => {
         email: "",
         passward: ""
     });
-    const { name, username, email, passward } = user;
+    const { name, username, email, passward, last_name, organisation_name } = user;
     const [loading, setloading] = useState(false)
     const [error, seterror] = useState('')
 
@@ -30,9 +30,9 @@ const CreateOrg = () => {
                 email: email,
                 password: passward,
                 first_name: name,
-                last_name: '',
+                last_name: 'last_name',
                 user_type: 2,
-                organisation_name: '',
+                organisation_name: organisation_name,
             }
             console.log(registerAPIData)
             let resp = await registerAPI(registerAPIData)
@@ -82,7 +82,7 @@ const CreateOrg = () => {
                             className="form-control form-control-lg"
                             placeholder="Enter last name"
                             name="last"
-                            value={last}
+                            value={last_name}
                             onChange={(e) => onInputChange(e)}
                         />
                     </div>
@@ -98,6 +98,16 @@ const CreateOrg = () => {
                     </div>
                     <div className="form-group mb-2">
                         <input
+                            type="text"
+                            className="form-control form-control-lg"
+                            placeholder="Enter your organization name"
+                            name="organisation_name"
+                            value={organisation_name}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </div>
+                    <div className="form-group mb-2">
+                        <input
                             type="passward"
                             className="form-control form-control-lg"
                             placeholder="Enter Passward"
@@ -106,10 +116,12 @@ const CreateOrg = () => {
                             onChange={(e) => onInputChange(e)}
                         />
                     </div>
+
                     <button className="btn btn-warning w-75 mb-3">{loading ? '...' : 'Create account'}</button>
                     <p>{error}</p>
                 </form>
                 <Link exact to="login">Already have a account?</Link>
+
             </div>
         </div>
     )
