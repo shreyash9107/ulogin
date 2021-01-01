@@ -14,7 +14,8 @@ const CreateIndAcc = () => {
         email: "",
         passward: ""
     });
-    const { name, last_name, username, email, passward } = user;
+
+    const { name, last_name, username, email, passward, organisation_name } = user;
 
     const onInputChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
@@ -34,7 +35,7 @@ const CreateIndAcc = () => {
                 first_name: name,
                 last_name: last_name,
                 user_type: 1,
-                organisation_name: '',
+                organisation_name: organisation_name,
             }
             console.log(registerAPIData)
             let resp = await registerAPI(registerAPIData)
@@ -52,7 +53,7 @@ const CreateIndAcc = () => {
             setloading(false)
             setText('Error')
         }
-        // history.push('/login')
+        history.push('/token')
     }
     return (
         <div className="container mt-5">
@@ -101,6 +102,16 @@ const CreateIndAcc = () => {
                     </div>
                     <div className="form-group mb-2">
                         <input
+                            type="text"
+                            className="form-control form-control-lg"
+                            placeholder="Enter your organization name"
+                            name="organisation_name"
+                            value={organisation_name}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </div>
+                    <div className="form-group mb-2">
+                        <input
                             type="passward"
                             className="form-control form-control-lg"
                             placeholder="Enter Passward"
@@ -109,6 +120,7 @@ const CreateIndAcc = () => {
                             onChange={(e) => onInputChange(e)}
                         />
                     </div>
+
                     <button className="btn btn-warning w-75 mb-3">{loading ? '...' : 'Create account'}</button>
                     <p>{text}</p>
                 </form>

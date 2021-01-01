@@ -78,6 +78,16 @@ const CreateOrg = () => {
                     </div>
                     <div className="form-group mb-2">
                         <input
+                            type="text"
+                            className="form-control form-control-lg"
+                            placeholder="Enter last name"
+                            name="last"
+                            value={last}
+                            onChange={(e) => onInputChange(e)}
+                        />
+                    </div>
+                    <div className="form-group mb-2">
+                        <input
                             type="email"
                             className="form-control form-control-lg"
                             placeholder="Enter Email Address"

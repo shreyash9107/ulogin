@@ -8,6 +8,7 @@ import CreateOption from './components/CreateOption';
 import UserLogin from './components/UserLogin';
 import Forget from './components/Forget';
 import CreateOrg from './components/Organization';
+import Activate from './components/activate';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/individual" component={CreateIndAcc} />
           <Route exact path="/forget" component={Forget} />
           <Route exact path="/organization" component={CreateOrg} />
+          <Route exact path="/token" component={Activate} />
         </Switch>
       </div>
     </Router>

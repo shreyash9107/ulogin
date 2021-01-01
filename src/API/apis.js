@@ -33,3 +33,22 @@ export async function registerAPI(data) {
     }
 
 }
+
+export async function activateAPI(data) {
+    try {
+        return await fetch(`${BASE_API}/api/v1/activate/`, {
+            method: "PUT",
+            body: JSON.stringify(data),
+            headers: { "Content-type": "application/json; charset=UTF-8" }
+        }).then(response => {
+            return response.json()
+        }).then(json => {
+            return json
+        });
+
+    } catch (error) {
+        console.log(error)
+        return error
+    }
+}
+
